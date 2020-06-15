@@ -5,11 +5,12 @@ from multiprocessing import Pool
 
 
 if __name__ == '__main__':
-    path1 = 'C:/Users/HP/Desktop/Course_work/Datasets/neg1'
-    path2 = 'C:/Users/HP/Desktop/Course_work/Datasets/neg2'
-    path3 = 'C:/Users/HP/Desktop/Course_work/Datasets/pos1'
-    path4 = 'C:/Users/HP/Desktop/Course_work/Datasets/pos2'
-    path5 = 'C:/Users/HP/Desktop/Course_work/Datasets/unsupp'
+    main_address = 'C:/Users/HP/Desktop/Course_work/Datasets/'
+    path1 = main_address + 'neg1'
+    path2 = main_address + 'neg2'
+    path3 = main_address + 'pos1'
+    path4 = main_address + 'pos2'
+    path5 = main_address + 'unsupp'
 
     list_of_files1 = os.listdir(path=path1)
     list_of_files2 = os.listdir(path=path2)
