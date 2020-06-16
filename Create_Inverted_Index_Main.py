@@ -1,6 +1,6 @@
 import os
 import time
-from Needed_functions import Create_Inverted_Index, makeup, merge_dicts, open_directory
+from Needed_Functions import Create_Inverted_Index, makeup, merge_dicts, open_directory
 from multiprocessing import Pool
 
 
@@ -45,6 +45,7 @@ if __name__ == '__main__':
         result = merge_dicts(result)
         result = makeup(result)
         print(time.time() - start_time)
+
     elif number_of_threads == 3:
         args_my = [[text_list1 + text_list2 + text_list3, main_text_list], [text_list4 + text_list5, main_text_list],
                    [text_list6, main_text_list]]
@@ -53,6 +54,7 @@ if __name__ == '__main__':
         result = merge_dicts(result)
         result = makeup(result)
         print(time.time() - start_time)
+
     elif number_of_threads == 4:
         args_my = [[text_list1 + text_list2, main_text_list], [text_list3 + text_list4, main_text_list],
                    [text_list5, main_text_list], [text_list6, main_text_list]]
@@ -61,6 +63,7 @@ if __name__ == '__main__':
         result = merge_dicts(result)
         result = makeup(result)
         print(time.time() - start_time)
+
     elif number_of_threads == 5:
         args_my = [[text_list1 + text_list2, main_text_list], [text_list3, main_text_list], [text_list4, main_text_list],
                    [text_list5, main_text_list], [text_list6, main_text_list]]
