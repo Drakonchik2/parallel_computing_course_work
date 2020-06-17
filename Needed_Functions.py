@@ -1,3 +1,20 @@
+def clean_string(str):
+    symbols = ['.', ',', '(', ')', '!', '?', '*', ':', ';', '"', '{', '}', '~', '%', '&', '$', "::", '#', '##', "'",
+            '/', '+', '=', '>', '@']
+    str = str.replace('<br />', '')
+    str = str.replace('-', '')
+    str = str.replace('//', '')
+    str = str.replace('/////', '')
+    str = str.replace('<bt><br>', '')
+    for i in str:
+        for j in symbols:
+            if i == j:
+                str = str.replace(i, ' ')
+    str = str.replace('  ', ' ')
+    str = str.replace('----', ' ')
+    str = str.replace('--', ' ')
+    return str
+
 def open_directory(list_of_files, path):
     text_list = []
     for file in list_of_files:
@@ -24,13 +41,6 @@ def create_list_of_dict(lst, main_lst):
     return list_of_dict
 
 
-def listmerge(lst):
-    res = []
-    for el in lst:
-        res += listmerge(el) if isinstance(el, list) else [el]
-    return res
-
-
 def merge_dicts(list_of_dict):
     j = 0
     inverted_index = {}
@@ -40,6 +50,13 @@ def merge_dicts(list_of_dict):
         list_of_dict[j+1] = inverted_index
         j += 1
     return inverted_index
+
+
+def listmerge(lst):
+    res = []
+    for el in lst:
+        res += listmerge(el) if isinstance(el, list) else [el]
+    return res
 
 
 def new_lst(lst):
@@ -70,17 +87,9 @@ def Create_Inverted_Index(lst):
     return result_dicts
 
 
-def clean_string(str):
-    symbols = ['.', ',', '(', ')', '!', '?', '*', ':', ';', '"']
-    str = str.replace('<br />', '')
-    for i in str:
-        for j in symbols:
-            if i == j:
-                str = str.replace(i, ' ')
-    str = str.replace('  ', ' ')
-    str = str.replace('----', ' ')
-    str = str.replace('--', ' ')
-    return str
+def good_print(dict_my):
+    dict_my = dict(sorted(dict_my.items()))
+    return dict_my
 
 
 

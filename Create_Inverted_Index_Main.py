@@ -1,8 +1,9 @@
 import os
 import time
-from Needed_Functions import Create_Inverted_Index, makeup, merge_dicts, open_directory
+from Needed_Functions import Create_Inverted_Index, makeup, merge_dicts, open_directory, good_print
 from multiprocessing import Pool
 
+big_list = []
 
 if __name__ == '__main__':
     main_address = 'C:/Users/HP/Desktop/Course_work/Datasets/'
@@ -44,6 +45,7 @@ if __name__ == '__main__':
         result = [inverted_index1, inverted_index2, inverted_index3]
         result = merge_dicts(result)
         result = makeup(result)
+        good_print(result)
         print(time.time() - start_time)
 
     elif number_of_threads == 3:
@@ -53,6 +55,7 @@ if __name__ == '__main__':
         result = pool.map(Create_Inverted_Index, args_my)
         result = merge_dicts(result)
         result = makeup(result)
+        good_print(result)
         print(time.time() - start_time)
 
     elif number_of_threads == 4:
@@ -62,6 +65,7 @@ if __name__ == '__main__':
         result = pool.map(Create_Inverted_Index, args_my)
         result = merge_dicts(result)
         result = makeup(result)
+        good_print(result)
         print(time.time() - start_time)
 
     elif number_of_threads == 5:
@@ -71,4 +75,9 @@ if __name__ == '__main__':
         result = pool.map(Create_Inverted_Index, args_my)
         result = merge_dicts(result)
         result = makeup(result)
+        result = good_print(result)
         print(time.time() - start_time)
+
+    with open('out.txt', 'w') as out:
+        for key, val in result.items():
+            out.write('{}:{}\n'.format(key, val))
